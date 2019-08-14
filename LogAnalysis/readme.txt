@@ -1,4 +1,4 @@
-The data after pre-processing left remain 47468. According the emails address of employees, we can get a statistics about the relationship between two employees.
+The data after pre-processing left remain 47468. According the emails address of employees, we can get a statistics about the relationship between two employees and list as email.mat.
 
 The email.mat is the adjacency matrix of the enron employees, it means that Two employees have direct mail interaction.
 
