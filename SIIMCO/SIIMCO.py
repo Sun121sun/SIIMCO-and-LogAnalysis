@@ -49,7 +49,7 @@ def vv_out(person):
     return w_all
 info={}
 import operator
-for k in sta['num'].tolist():
+for k in sta['ID'].tolist():
     w_in = vv_in(k)
     w_out = vv_out(k)
     w_k=0
@@ -61,14 +61,14 @@ for k in sta['num'].tolist():
 
 count =0
 c_c = 0
-total_per_num = len(sta['num'].tolist())
+total_per_num = len(sta['ID'].tolist())
 
 name = pd.read_csv('../input/criminals.csv')
 cri_per_num = len(name['num'].tolist()) # the number of criminals
 
 for key,value in list_sort: 
     count+=1
-    if key in name['num'].tolist():
+    if key in name['ID'].tolist():
         c_c=c_c+1
         print (key)
     print(key,value)
