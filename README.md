@@ -33,5 +33,5 @@
       
       featuresel.py contains core codes of our method<tr/>
 
-      The details of the methods are in their respective folders.
+   The details of the methods are in their respective folders.
 
