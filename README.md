@@ -3,7 +3,7 @@
 1. RAW DATA:<tr/>
    The input of three methods are ENRON EMAILS DATA SET. <tr/>
    
-   We filtered the emails according the email address of employees of enron company.<tr/>
+   We filtered the emails according the email address of employees of enron company. There are remain 47468 emails.
    
    The raw data can be download from webset： https://data.world/brianray/enron-email-dataset<tr/>
 
