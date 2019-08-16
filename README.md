@@ -12,16 +12,26 @@
 
 2. THE INTRODUCTION OF THE FOLDS:<tr/>
    1. In SIIMCO folder:<tr/>
+   
       SIIMCO.png is the formula we use.<tr/>
+      
       SIIMCO.py is the implementation algorithm.<tr/>
+      
       total_statistics.csv is the input of the SIIMCO.py<tr/>
+      
    2. In LogAnalysis folder:<tr/>
+   
       LogAnalysis.m is the implementation algorithm. <tr/>
+      
       email.mat is the input of the LogAnalysis.<tr/>
+      
    3. In ourmethod folder:<tr/>
+   
       perplexity.py is the implementation algorithm for getting perplexity.<tr/>
+      
       lda.py is the implementation algorithm for getting LDA model.<tr/>
+      
       featuresel.py contains core codes of our method<tr/>
-   <tr/>
+
       The details of the methods are in their respective folders.
 
