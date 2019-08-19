@@ -1,9 +1,9 @@
-The data after pre-processing left remain 47468. According the emails address of employees, we can get a statistics about the relationship between two employees and list as email.mat.
+1. In this fold:
 
-The email.mat is the adjacency matrix of the enron employees, it means that Two employees have direct mail interaction.
+   email.mat is the adjacency matrix of the enron employees. It is the statistics about the relitionship between two employees(one sent an email to or received an email from another). 
+   
+   LogAnalysis.m is the Newman method to caculate to clusters. 
+   
+   result.m is the output of LogAnalysis.m.
 
-The Newman.m was a matlab code. 
-
-The email.mat was as an input and the result.m was the output.
-
-Then the python code logAnalysis.py was used to calculate precision recall and F1score with the result.m as an input.
+   The logAnalysis.py is the code to calculate precision recall and F1-score with the result.m as the input.
