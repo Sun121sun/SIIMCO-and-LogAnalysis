@@ -7,7 +7,7 @@ import pandas as pd
 import numpy as np
 import csv
 
-sta = pd.read_csv('total_statistics.csv')
+sta = pd.read_csv('../input/total_statistics.csv')
 
 def vv_in(person):
 
