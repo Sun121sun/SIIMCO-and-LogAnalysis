@@ -1,9 +1,9 @@
 #GN_weight
 import pandas as pd
 
-total_statistics=pd.read_csv('input/total_statistics.csv')
+total_statistics=pd.read_csv('../input/total_statistics.csv')
 
-with open('output/data.gml','w') as f:    #
+with open('data.gml','w') as f:    #
     f.write("graph\n")
     f.write("[\n")
 
