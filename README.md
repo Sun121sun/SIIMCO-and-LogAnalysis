@@ -31,6 +31,8 @@
       LogAnalysis-GN.py: It is the implement of Girvan and Newman algorithm. <tr/>
       
       A adjacency matrix with weights will be as the input, which represent the number of emails sent by individuals to the others.<tr/>
+      
+      createGraph.py: We provided a method to change the matrix into a gml file.
    
       b.  Fast Newman algorithm: it is proposed in the paper *" Fast algorithm for detecting community structure in networks"*.<tr/>
       
