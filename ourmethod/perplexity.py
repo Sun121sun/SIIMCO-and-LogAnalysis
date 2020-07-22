@@ -106,7 +106,7 @@ if __name__ == '__main__':
     print ('2.read data ------ ')
 
 
-    f = pd.read_csv('output/emails_use.csv',low_memory=False)
+    f = pd.read_csv('emails.csv',low_memory=False)
 
     f['content']=f['content'].apply(delete_biaodian)
     f['content']=f['content'].apply(docs_preprocessor)
@@ -136,7 +136,7 @@ if __name__ == '__main__':
 
     # train 
     
-    f_test = pd.read_csv('140yu.csv',low_memory=False)# you can load the whole data or just some of them.
+    f_test = pd.read_csv('140.csv',low_memory=False)# you can load the whole data or just some of them.
 
     f_test['content']=f_test['content'].apply(delete_biaodian)
     f_test['content']=f_test['content'].apply(docs_preprocessor)
