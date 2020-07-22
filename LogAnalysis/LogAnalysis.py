@@ -73,7 +73,7 @@ class GN_w:
         return self.partition
         
     def to_gml(self):
-        nx.write_gml(self.G_copy, 'output/outtoGN_weighted.gml')
+        nx.write_gml(self.G_copy, 'outtoGN_weighted.gml')
     
 	#Computing the Q
     def cal_Q(self,partition,G):
@@ -113,88 +113,3 @@ if __name__ == '__main__':
     algorithm.run()
     zidian=algorithm.add_group()
     algorithm.to_gml()
-    
-    G1 = nx.read_gml('output/outtoGN_weighted.gml')
-    bet_cen = nx.betweenness_centrality(G1)
-    bet_cen1 = sorted(bet_cen.items(), key=lambda d:d[1], reverse = True )  
-    #print(order_dict(bet_cen,25))
-    # Closeness centrality
-    clo_cen = nx.closeness_centrality(G1)
-    clo_cen1 = sorted(clo_cen.items(), key=lambda d:d[1], reverse = True )  
-    # Eigenvector centrality
-    eig_cen = nx.eigenvector_centrality(G1)
-    eig_cen1 = sorted(eig_cen.items(), key=lambda d:d[1], reverse = True )  
-    # Degree centrality
-    deg_cen = nx.degree_centrality(G1)
-    deg_cen1 = sorted(deg_cen.items(), key=lambda d:d[1], reverse = True ) 
-    
-    
-    criminals=pd.read_csv('output/criminals.csv')
-    n=len(criminals['num']) # the nimber
-    bet_cen2=bet_cen1[:n]
-    clo_cen2=clo_cen1[:n]
-    eig_cen2=eig_cen1[:n]
-    deg_cen2=deg_cen1[:n]
-    result1 = []
-    for i in range(n):
-        result1.append(bet_cen2[i][0])
-    print (result1)
-    result2 = []
-    for i in range(n):
-        result2.append(clo_cen2[i][0])
-    print (result2)
-    result3 = []
-    for i in range(n):
-        result3.append(eig_cen2[i][0])
-    print (result3)
-    result4 = []
-    for i in range(n):
-        result4.append(deg_cen2[i][0])
-    print (result4)
-    
-
-    print('---------------------------')
-    print('betweenness_centrality')
-    j=0
-    for i in result1:
-        #print(type(i))
-        for k in criminals['num'].tolist():
-            #print(k)
-            if int(i)==k:
-                print (i)
-                j+=1
-    print(j)
-    print('---------------------------')
-    print('closeness_centrality')
-    j=0
-    for i in result2:
-        #print(type(i))
-        for k in criminals['num'].tolist():
-            #print(k)
-            if int(i)==k:
-                print (i)
-                j+=1
-    print(j)
-    print('---------------------------')
-    print('eigenvector_centrality')
-    j=0
-    for i in result3:
-        #print(type(i))
-        for k in criminals['num'].tolist():
-            #print(k)
-            if int(i)==k:
-                print (i)
-                j+=1
-    print(j)
-    print('---------------------------')
-    print('degree_centrality')
-    j=0
-    for i in result4:
-        #print(type(i))
-        for k in criminals['num'].tolist():
-            #print(k)
-            if int(i)==k:
-                print (i)
-                j+=1
-    print(j)
-    print('---------------------------')
