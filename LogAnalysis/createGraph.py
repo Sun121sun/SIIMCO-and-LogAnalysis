@@ -1,7 +1,7 @@
 #GN_weight
 import pandas as pd
 
-total_statistics=pd.read_csv('../input/total_statistics.csv')
+total_statistics=pd.read_csv('transmit-receive.csv')
 
 with open('data.gml','w') as f:    #
     f.write("graph\n")
