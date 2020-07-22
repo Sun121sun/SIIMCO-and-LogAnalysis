@@ -10,13 +10,11 @@ import skfeature.utility.entropy_estimators as ees
 import xlsxwriter
 
 from sklearn.naive_bayes import GaussianNB
-
 from sklearn.tree import DecisionTreeClassifier
-
 from sklearn.linear_model import LogisticRegression
-
 from sklearn.ensemble import  AdaBoostClassifier
-from sklearn.discriminant_analysis import LinearDiscriminantAnalysis
+from sklearn.linear_model import LogisticRegression
+from sklearn import svm
 
 from sklearn.metrics import f1_score
 
@@ -219,9 +217,9 @@ def cv_f1(alg_nub):
     
         clf_dt = DecisionTreeClassifier()
         clf_lr = LogisticRegression(penalty='l2')
- 
+        clf_rf = RandomForestClassifier(n_estimators=8)
         clf_ab = AdaBoostClassifier()
-        clf_ld = LinearDiscriminantAnalysis()
+        clf_svm = svm.SVC()
  
 
        
@@ -229,7 +227,8 @@ def cv_f1(alg_nub):
         f1_dtscores=np.zeros((alg_nub,select_nub))
         f1_lrscores=np.zeros((alg_nub,select_nub))
         f1_abscores=np.zeros((alg_nub,select_nub))
-        f1_ldscores=np.zeros((alg_nub,select_nub))
+	f1_lrscores=np.zeros((alg_nub,select_nub))
+        f1_svmscores=np.zeros((alg_nub,select_nub))
 
 
         X_train, X_test = XX1, XX2
@@ -250,41 +249,54 @@ def cv_f1(alg_nub):
                 clf_nb.fit(data_tr,y_train)
                 y_pre=clf_nb.predict(data_te)
                 
-                s3=f1_score(y_test, y_pre) #f1-score
-                #s3=recall_score(y_test, y_pre) #recall
-				#s3=precision_score(y_test, y_pre) #precision
-                f1_nbscores[an][k-1]=s3
+                s1=f1_score(y_test, y_pre) #f1-score
+                #s1=recall_score(y_test, y_pre) #recall
+		#s1=precision_score(y_test, y_pre) #precision
+                f1_nbscores[an][k-1]=s1
                 #======dt分类器======
                 
                 clf_dt.fit(data_tr,y_train)
                 y_pre=clf_dt.predict(data_te)
                 
-                s4=f1_score(y_test, y_pre)
-                
-                f1_dtscores[an][k-1]=s4
+                s2=f1_score(y_test, y_pre)
+		#s2=recall_score(y_test, y_pre) #recall
+		#s2=precision_score(y_test, y_pre) #precision
+                f1_dtscores[an][k-1]=s2
                 
                 #======lr分类器======
                 
                 clf_lr.fit(data_tr,y_train)
                 y_pre=clf_lr.predict(data_te)
-                s6=f1_score(y_test, y_pre)
-                    #scores_lr[train_n][an][k-1]=s6
-                f1_lrscores[an][k-1]=s6
+                s3=f1_score(y_test, y_pre)
+                #s3=recall_score(y_test, y_pre) #recall
+		#s3=precision_score(y_test, y_pre) #precision
+                f1_lrscores[an][k-1]=s3
+		
+		#======ab分类器======
+                
+                clf_rf.fit(data_tr,y_train)
+                y_pre=clf_rf.predict(data_te)
+                s4=f1_score(y_test, y_pre)
+                #s4=recall_score(y_test, y_pre) #recall
+		#s4=precision_score(y_test, y_pre) #precision
+                f1_rfscores[an][k-1]=s4
                 
                 #======ab分类器======
                 
                 clf_ab.fit(data_tr,y_train)
                 y_pre=clf_ab.predict(data_te)
-                s9=f1_score(y_test, y_pre)
+                s5=f1_score(y_test, y_pre)
+                #s5=recall_score(y_test, y_pre) #recall
+		#s5=precision_score(y_test, y_pre) #precision
+                f1_abscores[an][k-1]=s5
+                #======svm分类器======
                 
-                f1_abscores[an][k-1]=s9
-                #======ld分类器======
-                
-                clf_ld.fit(data_tr,y_train)
-                y_pre=clf_ld.predict(data_te)
-                s10=f1_score(y_test, y_pre)
-                
-                f1_ldscores[an][k-1]=s10
+                clf_svm.fit(data_tr,y_train)
+                y_pre=clf_svm.predict(data_te)
+                s6=f1_score(y_test, y_pre)
+                #s6=recall_score(y_test, y_pre) #recall
+		#s6=precision_score(y_test, y_pre) #precision
+                f1_svmscores[an][k-1]=s6
  
                 
             
@@ -295,7 +307,8 @@ def cv_f1(alg_nub):
         writestality("output/new_lr_f1_"+str(i)+".xlsx",exceldata[0],f1_lrscores,datapos,flag,select_nub)
        
         writestality("output/new_ab_f1_"+str(i)+".xlsx",exceldata[0],f1_abscores,datapos,flag,select_nub)
-        writestality("output/new_ld_f1_"+str(i)+".xlsx",exceldata[0],f1_ldscores,datapos,flag,select_nub)
+	writestality("output/new_rf_f1_"+str(i)+".xlsx",exceldata[0],f1_rfscores,datapos,flag,select_nub)
+        writestality("output/new_svm_f1_"+str(i)+".xlsx",exceldata[0],f1_svmscores,datapos,flag,select_nub)
         print str(i)+"----end"
         
 
