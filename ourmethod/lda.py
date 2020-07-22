@@ -50,7 +50,7 @@ if __name__ == '__main__':
 
     print ('2.read data ------ ')
 
-    f = pd.read_csv('output/emails_use.csv',low_memory=False)
+    f = pd.read_csv('emails.csv',low_memory=False)
 
     f['content']=f['content'].apply(delete_biaodian)
     f['content']=f['content'].apply(docs_preprocessor)#stop words 
